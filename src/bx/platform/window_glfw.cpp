@@ -1,8 +1,7 @@
-#include "bx/engine/modules/window/backend/window_glfw.hpp"
+#include "bx/platform/window_glfw.hpp"
 
-#include "bx/engine/core/macros.hpp"
-#include "bx/engine/core/data.hpp"
-#include "bx/engine/core/profiler.hpp"
+#include <bx/core/macros.hpp>
+#include <bx/core/profiler.hpp>
 
 #include <stdlib.h>
 
@@ -44,6 +43,11 @@ void Window::SetCursorMode(CursorMode mode)
 	}
 }
 
+WindowGLProc Window::GetProcAddress(const char* name)
+{
+	return glfwGetProcAddress(name);
+}
+
 static void glfw_error_callback(int i, const char* c)
 {
 	BX_LOGE("GLFW ({}) {}", i, c);
@@ -72,9 +76,9 @@ bool Window::Initialize()
 		return false;
 	}
 
-	const String& title = Data::GetString("Title", "Title", DataTarget::SYSTEM);
-	int width = Data::GetInt("Width", 800, DataTarget::SYSTEM);
-	int height = Data::GetInt("Height", 600, DataTarget::SYSTEM);
+	const String& title = "Titlte";// Data::GetString("Title", "Title", DataTarget::SYSTEM);
+	int width = 800;// Data::GetInt("Width", 800, DataTarget::SYSTEM);
+	int height = 600;// Data::GetInt("Height", 600, DataTarget::SYSTEM);
 
 	GLFWmonitor* pMonitor = nullptr;
 
