@@ -13,6 +13,7 @@ bool ImGuiImpl::Initialize_Window()
         return false;
     }
 
+    return true;
 }
 
 void ImGuiImpl::Shutdown_Window()
