@@ -21,6 +21,7 @@ static float mousepos[2];
 static bool gamepad_connected;
 
 void joystick_callback(int joy, int event) {}
+
 void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 {
 	// get the screen-to-game scaling parameters
